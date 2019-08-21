@@ -6,4 +6,3 @@ git status
 git commit -m Atualização
 echo "Aguarde[...]"; sleep 1;
 git push origin master
-xdg-open https://github.com/isaacoliveira1/Tetris

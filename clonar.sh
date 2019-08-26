@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Digite o link para clonagem"
+echo "Digite o nome para clonagem"
 read op
-echo "Clonando o diretório $op"
-git clone $op
+echo "Clonando o diretório https://github.com/$op/tetris.git"
+echo "Aguarde"; sleep 3;
+git clone https://github.com/$op/tetris.git

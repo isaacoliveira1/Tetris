@@ -1,35 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define COLUMNS 60
-#define ROWS 25
+/*
 
-void init(char matrix[ROWS][COLUMNS]){
-            int i,j;
-            for (i=0; i<ROWS; i++){
-                for (j=0; j<COLUMNS; j++){
-                    matrix[i][j] = 177;
-                }
-            }
-        }
-void printMatrix (char matrix[ROWS][COLUMNS]){
-              int i,j;
-            for (i=0; i<ROWS; i++){
-                    
-                for (j=0; j<COLUMNS; j++){
-                   printf("%c", matrix[i][j]);
-
-                }
-                printf ("\n");
-            }
-        }
+    Jogo de entreterimento tetris em C para consoles, para executar start .\tetris.exe
+    Autor: Isaac Nicholas.
+    Data: 28/08/2019.
 
 
+*/
+#include "tetris.h"
+/*
+    Parte principal do proagama responsavel por iniciar e chamar as funções criadas.
 
+*/
 int main (){
     char matrix[ROWS][COLUMNS];
-    int posi;
-    int posj;
-    int poxf, poxj;
+    int posi, posj;
     posi = ROWS/2;
     posj = COLUMNS/2;
    
@@ -43,11 +27,12 @@ int main (){
 
          matrix[posi][posj] =  '@';
          printMatrix(matrix);
-
          matrix[posi][posj] =  177;
-         if (posj < COLUMNS) posj ++;
-    
-    
+         if (posj < COLUMNS) posj++;
+         
+    }
+
     system("pause");
     return 0;
+
 }

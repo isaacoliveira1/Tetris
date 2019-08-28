@@ -1,4 +1,16 @@
+/*
+
+    Jogo de entreterimento tetris em C para consoles, para executar start .\tetris.exe
+    Autor: Isaac Nicholas.
+    Data: 28/08/2019.
+
+
+*/
 #include "tetris.h"    
+/* 
+    Aqui estão as funções para inicializar
+
+*/
 
 void init(char matrix[ROWS][COLUMNS]){
             int i,j;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define COLUMNS 60 // Configuração das dimensões da matriz principal do jogo
+#define COLUMNS 61 // Configuração das dimensões da matriz principal do jogo
 #define ROWS 25 // Configuração das dimensões da matriz principal do jogo
 /*
 

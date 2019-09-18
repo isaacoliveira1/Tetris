@@ -16,12 +16,14 @@
                     int i,j;
                     for(i=0; i<ROWS; i++){
                         for(j=0; j<COLUMNS; j++){
+                            /*
                             if (i == 0 || i == 24){
                             matrix[i][j] = 178;
                         } 
                         else if (j == 0 || j == 60){
                             matrix[i][j] = 178;
                            } else
+                           */
                             matrix[i][j] = 177;
                             }
                     }
@@ -36,39 +38,22 @@ void printMatrix(char matrix[ROWS][COLUMNS]){
     printf("\t\t\t");
     //Linha de cima
     for(j=0; j<COLUMNS+2; j++){
-        printf("*");
+        printf("\xB2");
     }
     printf("\n");
 
     //Matriz do jogo
     for(i=0; i<ROWS; i++){        
-        printf("\t\t\t*");
+        printf("\t\t\t\xB2");
         for(j=0; j<COLUMNS; j++){
             printf("%c", matrix[i][j]);
         }
-        printf("*\n");
+        printf("\xB2\n");
     }
-
-    printf("\t\t\t");
     //Linha de baixo
-    for(j=0; j<COLUMNS+2; j++){
-        printf("*");
-    }
-    printf("\n");
-
+    printf("\t\t\t");
+     for(j=0; j<COLUMNS+2; j++){
+          printf("\xB2");
+     }
+     printf ("\n");
 }
-
-
-
-
-        void printMatrix (char matrix[ROWS][COLUMNS]){
-                    int i,j;
-                    for (i=0; i<ROWS; i++){
-                        for (j=0; j<COLUMNS; j++){
-                        printf("%c", matrix[i][j]);
-
-                        }
-                        printf ("\n");
-                    }
-                }
-

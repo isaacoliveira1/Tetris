@@ -16,13 +16,14 @@ Parte principal do proagama responsavel por iniciar e chamar as funções criada
 int main (){
         int keypressed = 0;
         char matrix[ROWS][COLUMNS];
+        //Posição do personagem
         Bloco batata;
         batata.i = 0;
         batata.j = COLUMNS/2;
         batata.tipo = TIPO_I;
         batata.orientacao = ORIENTACAO_LEFT;
-        batata.width = 1;
-        batata.height = 4;
+        batata.width = 5;
+        batata.height = 1;
 
         system("COLOR E4");               
          
@@ -37,6 +38,7 @@ int main (){
          gotoxy (0,0);
          #if DEBUG == 1
          printf ( "%c = (%d, %d)\n" , 178, batata.i, batata.j);
+         printf ("%c Orientacao =(%d , %d) \n" ,219, batata.width, batata.height);
          #endif
 
          //Posicionar no meio da matriz
@@ -54,24 +56,29 @@ int main (){
         switch (keypressed){
                 case A: 
                 case a: 
-                case SetaD:  if(batata.j>0) batata.j--; break; //vai pra direita
+                case SetaD:  if(batata.j - (batata.width/2) > 0) batata.j--; break; //vai pra direita
                 case D:
                  case d:
-                case SetaE: if(batata.j<COLUMNS-1)batata.j++; break; //vai pra esquerda
-              
+                case SetaE: if(batata.j + (batata.width/2) < (COLUMNS-1))batata.j++; break; //vai pra esquerda
               case TECLA_S:
               case TECLA_s: 
-              case TECLA_ESPACO:
-              if (batata.orientacao == ORIENTACAO_LEFT)
-              {
-              batata.orientacao  = ORIENTACAO_UP;
-              }
-              else { batata.orientacao++; }
-              break;
+              case TECLA_ESPACO: // Vira o bloco
+              if (batata.orientacao == ORIENTACAO_LEFT)batata.orientacao  = ORIENTACAO_UP;
+              else  batata.orientacao++; 
+                      int aux = batata.width;
+                      batata.width = batata.height;
+                      batata.height = aux;
+                      if (batata.j < (batata.width/2))
+                      batata.j = batata.width/2;
+                      else if (batata.j > COLUMNS - (batata.width/2) -1)
+                      batata.j = COLUMNS - batata.width/2 -1;
 
+                      break;
+              }
+              
 
          }
-        }
+        
        
 system("pause");
 return 0;

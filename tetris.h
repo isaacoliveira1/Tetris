@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#define COLUMNS 60 // Configuração das dimensões da matriz principal do jogo
-#define ROWS 25 // Configuração das dimensões da matriz principal do jogo
+#define COLUMNS 30 // Configuração das dimensões da matriz principal do jogo
+#define ROWS 60 // Configuração das dimensões da matriz principal do jogo
 #define setas 224
 #define A 65
 #define D 68

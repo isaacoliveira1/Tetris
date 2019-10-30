@@ -4,9 +4,10 @@ Jogo de entreterimento tetris em C para consoles, para executar start .\tetris.e
 Autor: Isaac Nicholas.
 Data: 28/08/2019.
  */
+#define DEBUG 1
 #include "display.h"
 #include "tetris.h"
-#define DEBUG 1
+
 
 
 /*
@@ -18,21 +19,19 @@ int main (){
         char matrix[ROWS][COLUMNS];
         //Posição do personagem
         Bloco batata;
-        batata.i = 0;
-        batata.j = COLUMNS/2;
-        batata.tipo = TIPO_I;
-        batata.orientacao = ORIENTACAO_LEFT;
-        batata.width = 5;
-        batata.height = 1;
 
-        system("COLOR E4");               
-         
-        system("cls");
-        init(matrix);
-        
-//Apagar o cursor da tela;
+        //Apagar o cursor da tela;
         ShowConsoleCursor(0);
         system("cls");
+
+
+        initBar(&batata);
+        system("COLOR E4");               
+         
+        
+        init(matrix);
+        system("cls");
+
         
         while (keypressed != ESC){
          gotoxy (0,0);
@@ -46,10 +45,13 @@ int main (){
          //Mostra matriz na tela
          printMatrix(matrix);
          //Apaga posição anterior.
+        if (!collide(matrix, batata)){
          drawBar(matrix, batata, EMPTY);
-
          if (batata.i < ROWS-1) batata.i++;
-
+        }
+        else{
+                initBar(&batata);
+        }
          keypressed = 0;
          if(kbhit()) keypressed = getch();
         if (keypressed ==setas) keypressed = getch();
@@ -63,23 +65,11 @@ int main (){
               case TECLA_S:
               case TECLA_s: 
               case TECLA_ESPACO: // Vira o bloco
-              if (batata.orientacao == ORIENTACAO_LEFT)batata.orientacao  = ORIENTACAO_UP;
-              else  batata.orientacao++; 
-                      int aux = batata.width;
-                      batata.width = batata.height;
-                      batata.height = aux;
-                      if (batata.j < (batata.width/2))
-                      batata.j = batata.width/2;
-                      else if (batata.j > COLUMNS - (batata.width/2) -1)
-                      batata.j = COLUMNS - batata.width/2 -1;
-
-                      break;
-              }
-              
-
-         }
+              rotate(&batata);
+            break;
         
-       
+                }
+        }
 system("pause");
 return 0;
 

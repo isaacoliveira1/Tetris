@@ -58,3 +58,16 @@ void printMatrix (char matrix[ROWS][COLUMNS]); // Printa a matriz principal
 // Desenhar uma barra usando o simbolo do caracter ASCII passado por parametro
 
 void drawBar(char matrix[ROWS][COLUMNS], Bloco barra, int simbolo); 
+
+
+//Inicializar peça do tipo Barra
+void initBar(Bloco *barra);
+
+
+//Rotacionar bloco
+
+void rotate (Bloco *bloco );
+
+// Verificar colisão de blocos
+
+int collide(char matrix[ROWS][COLUMNS], Bloco barra);

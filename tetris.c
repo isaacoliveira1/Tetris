@@ -25,7 +25,7 @@
                             matrix[i][j] = 178;
                            } else
                            */
-                            matrix[i][j] = 177;
+                            matrix[i][j] = EMPTY;
                             }
                     }
         }
@@ -113,8 +113,50 @@ void rotate (Bloco *bloco){
 
 int collide(char matrix[ROWS][COLUMNS], Bloco barra){
     int retorno = 0;
-    if ((barra.i + barra.height/2 >= ROWS-1))
-    retorno = 1;
+    
+    if((barra.i+1)  >= ROWS)
+        retorno = 1;
+
+    if(matrix[barra.i+1][barra.j] != EMPTY )
+        retorno = 1;
+
+    int t2 = barra.width / 2;
+    if(matrix[barra.i+1][barra.j + t2] != EMPTY )
+        retorno = 1;
+
+    if(matrix[barra.i+1][barra.j - t2] != EMPTY )
+        retorno = 1;
+    
+
     return retorno;
+}
+
+int collideBar(char matrix[ROWS][COLUMNS], Bloco barra, int collideSides, int side){
+    int retorno=0;
+
+    if((barra.i+1)  >= ROWS)
+        retorno = 1;
+
+    int t2 = barra.width / 2;
+    if(matrix[barra.i+1][barra.j + t2] != EMPTY )
+        retorno = 1;
+
+    if(matrix[barra.i+1][barra.j - t2] != EMPTY )
+        retorno = 1;
+//Colisao lateral horizontal
+     if (!collideSides==1){
    
+        if (side==SetaD && matrix[barra.i][barra.j + t2 + 1] != EMPTY)
+        retorno = 1;
+
+        if (side==SetaD && barra.j + t2 + 1 >= COLUMNS)
+        retorno = 1;
+
+        if (side==SetaE && matrix[barra.i][barra.j - t2 - 1] != EMPTY)
+        retorno = 1;
+
+        if (side==SetaE && barra.j - t2 - 1 < 0)
+        retorno = 1;
+        }
+    return retorno;
 }

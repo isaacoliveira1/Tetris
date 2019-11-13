@@ -30,9 +30,11 @@
 #define TIPO_I 7
 //Config Lay
 #define PIXEL 219
-#define EMPTY 177
+#define EMPTY (char)177
 #define TECLA_ESPACO 32
-
+#define CHECK_SIDE 1
+#define UNCHECK_SIDE 0
+#define NONE 0
 
 // Estrutura do tetris
 typedef struct{
@@ -71,3 +73,4 @@ void rotate (Bloco *bloco );
 // Verificar colisão de blocos
 
 int collide(char matrix[ROWS][COLUMNS], Bloco barra);
+int collideBar(char matrix[ROWS][COLUMNS], Bloco barra, int collideSides, int side);

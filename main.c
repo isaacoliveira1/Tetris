@@ -26,11 +26,12 @@ int main (){
 
 
         initBar(&batata);
-        system("COLOR E4");               
+        system("COLOR E4"); 
+        system("cls");             
          
         
         init(matrix);
-        system("cls");
+
 
         
         while (keypressed != ESC){
@@ -41,31 +42,48 @@ int main (){
          #endif
 
          //Posicionar no meio da matriz
+          
          drawBar(matrix, batata, PIXEL);
+        
          //Mostra matriz na tela
          printMatrix(matrix);
+         
+
          //Apaga posição anterior.
-        if (!collide(matrix, batata)){
-         drawBar(matrix, batata, EMPTY);
-         if (batata.i < ROWS-1) batata.i++;
+
+        if (!collideBar(matrix, batata,UNCHECK_SIDE,NONE)){
+                drawBar(matrix, batata, EMPTY);
+         
+                if (batata.i < (ROWS-1)) batata.i++;
+
         }
         else{
                 initBar(&batata);
+    
         }
          keypressed = 0;
          if(kbhit()) keypressed = getch();
         if (keypressed ==setas) keypressed = getch();
         switch (keypressed){
-                case A: 
-                case a: 
-                case SetaD:  if(batata.j - (batata.width/2) > 0) batata.j--; break; //vai pra direita
+                case (int) 'A': 
+                case (int) 'a': 
+                case SetaD:  
+                if(!collideBar(matrix,batata,CHECK_SIDE, SetaD)){
+                batata.j--; break; //vai pra direita
+                }
                 case D:
                  case d:
-                case SetaE: if(batata.j + (batata.width/2) < (COLUMNS-1))batata.j++; break; //vai pra esquerda
+                case SetaE: 
+                if(!collideBar(matrix,batata,CHECK_SIDE,SetaE)){
+                batata.j++; 
+                break; //vai pra esquerda
+                }
               case TECLA_S:
-              case TECLA_s: 
-              case TECLA_ESPACO: // Vira o bloco
+              case TECLA_s:  // Vira o bloco
+              case TECLA_ESPACO: 
               rotate(&batata);
+              break;
+              
             break;
         
                 }

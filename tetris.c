@@ -158,5 +158,20 @@ int collideBar(char matrix[ROWS][COLUMNS], Bloco barra, int collideSides, int si
         if (side==SetaE && barra.j - t2 - 1 < 0)
         retorno = 1;
         }
+
+        if (!collideSides==1){
+   
+        if (side==SetaD && matrix[barra.i][barra.j + 1] != EMPTY)
+        retorno = 1;
+
+        if (side==SetaD && barra.j + 1 >= COLUMNS)
+        retorno = 1;
+
+        if (side==SetaE && matrix[barra.i][barra.j - 1] != EMPTY)
+        retorno = 1;
+
+        if (side==SetaE && barra.j - 1 < 0)
+        retorno = 1;
+        }
     return retorno;
 }
